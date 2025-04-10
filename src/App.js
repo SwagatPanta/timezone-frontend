@@ -5,23 +5,22 @@ import PostDetail from "./pages/PostDetail";
 import AddPost from "./pages/AddPost";
 import Layout from "./components/Layout";
 import { UserContext } from "./context/UserContext";
-console.log("Layout component:", Layout);
 
 function App() {
   return (
-
-    <UserContext.Provider value={{ name: "John Doe", id: 1 }}>
-      <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/post/:id" element={<PostDetail />} />
-            <Route path="/add" element={<AddPost />} />
-          </Routes>
-        </Layout>
-      </Router>
-    </UserContext.Provider>
-
+    <div className="bg-gray-100 min-h-screen">
+      <UserContext.Provider value={{ name: "John Doe", id: 1 }}>
+        <Router>
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/post/:id" element={<PostDetail />} />
+              <Route path="/add" element={<AddPost />} />
+            </Routes>
+          </Layout>
+        </Router>
+      </UserContext.Provider>
+    </div>
   );
 }
 

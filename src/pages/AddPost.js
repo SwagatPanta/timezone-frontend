@@ -1,37 +1,26 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState,useContext, useRef } from "react";
+import { UserContext } from "../context/UserContext";
 
 function AddPost() {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const{name}=useContext(UserContext);
+  const inputRef=useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("https://jsonplaceholder.typicode.com/posts", { title, body })
-      .then(response => console.log("Post added:", response.data))
-      .catch(error => console.error("Error adding post:", error));
+    alert(`new post by ${name} : ${title}`);
+    setTitle('');
+    setBody('');
+    inputRef.current.focus();
   };
 
   return (
-    <div>
-      <h2>Add New Post</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <textarea
-          placeholder="Content"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-          required
-        />
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+    <input ref={inputRef} value={title} onChange={e => setTitle(e.target.value)} placeholder="Title" required />
+    <textarea value={body} onChange={e => setBody(e.target.value)} placeholder="Body" required />
+    <button type="submit">Add Post</button>
+  </form>
   );
 }
 

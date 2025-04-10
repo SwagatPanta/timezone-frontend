@@ -1,11 +1,11 @@
 import { useFetchPosts } from "../hooks/useFetchPosts";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { Link } from "react-router-dom";
 import PostCard from "../components/PostCard";
+import { POSTS_API_URL } from "../service/api";
 
 function Home() {
-  const posts=useFetchPosts('https://jsonplaceholder.typicode.com/posts?_limit=5');
+  const posts=useFetchPosts(POSTS_API_URL);
 
   
   return (

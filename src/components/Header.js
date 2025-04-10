@@ -5,7 +5,7 @@ export default function Header() {
         <header style={{ padding: '1rem', borderBottom: '1px solid #ccc' }}>
             <h1>Kathmandu Blog</h1>
             <nav>
-                <Link to="/">Home</Link>|<Link to="/">Add Post</Link>
+                <Link to="/">Home</Link>|<Link to="/add">Add Post</Link>
             </nav>
         </header>
     );
